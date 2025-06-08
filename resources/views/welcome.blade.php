@@ -172,7 +172,8 @@
                     <!-- Image Ends -->
                     <!-- Content Starts -->
                     <div class="col-sm-12 col-md-7 col-lg-6">
-                        <h3 class="title-about">WE ARE SMART WEALTH</h3>
+                        <h3 class="title-about">WE ARE {{ Str::upper(config('app.name')) }}
+                        </h3>
                         <p class="about-text"> Zürich, Switzerland based and FINMA regulated
                             crypto company with Funds secured in offline wallets. 
                             Fully compliant with  IT and money laundering security standards.

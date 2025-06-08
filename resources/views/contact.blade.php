@@ -91,7 +91,7 @@
                             <div class="contact-info-box-content">
                                 <h4>Email Addresses</h4>
 
-                                <p>smartwealth.st@gmail.com</p>
+                                <p>assetchain2@gmail.com</p>
                             </div>
                         </div>
                         <!-- Contact Info Box Ends -->

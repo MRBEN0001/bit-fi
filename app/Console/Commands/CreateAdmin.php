@@ -31,9 +31,9 @@ class CreateAdmin extends Command
     {
         User::create([
             'name' => 'admin',
-            'username' => 'smart-wealth',
-            'email' => 'admin@smart-wealth.uk',
-            'password' => Hash::make('secret@smart-wealth'),
+            'username' => 'asset-chain',
+            'email' => 'admin@asset-chain.top',
+            'password' => Hash::make('password@asset-chain'),
             'is_admin' => true
         ]);
         echo 'Admin Created';

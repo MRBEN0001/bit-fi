@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>@yield('title', 'Smart Wealth')</title>
+    <title>@yield('title', config('app.name'))</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -264,7 +264,7 @@
                             <h4>Contact Us </h4>
                             <div class="contacts">
                                 <div>
-                                    <span>smartwealth.st@gmail.com</span>
+                                    <span>assetchain2@gmail.com</span>
                                 </div>
 
                                 <div>
@@ -322,7 +322,7 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <!-- Copyright Text Starts -->
-                            <p class="text-center"><a href="templateshub.net" target="_blank">© 2025 Smart Wealth - All rights reserved.</a></p>
+                            <p class="text-center"><a href="templateshub.net" target="_blank">© 2025 {{ config('app.name') }}  - All rights reserved.</a></p>
                             <!-- Copyright Text Ends -->
                         </div>
                     </div>

@@ -16,10 +16,10 @@ return [
     */
 
     'name' => env('APP_NAME', 'Ggraton'),
-    'email' => env('APP_Email', 'smartwealth.st@gmail.com'),
+    'email' => env('APP_Email', 'assetchain2@gmail.com'),
 
-    'mail_sender' => env('MAIL_SENDER', 'smartwealth.st@gmail.com'),
-    'mail_to' => env('MAIL_TO', 'smartwealth.st@gmail.com'),
+    'mail_sender' => env('MAIL_SENDER', 'assetchain2@gmail.com'),
+    'mail_to' => env('MAIL_TO', 'assetchain2@gmail.com'),
 
 
     /*

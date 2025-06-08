@@ -41,26 +41,27 @@
             <!-- Content Starts -->
             <div class="col-sm-12 col-md-7 col-lg-6">
                 <div class="feature-about">
-                    <h3 class="title-about">WE ARE SMART WEALTH</h3>
+                    <h3 class="title-about">WE ARE {{ Str::upper(config('app.name')) }}
+</h3>
                     <p> Zürich, Switzerland based and FINMA regulated
                         crypto company with Funds secured in offline wallets.
                         Fully compliant with IT and money laundering security standards.
                     </p>
-
+{{-- 
                     <div class="col-sm-12 col-md-5 col-lg-6 text-center">
                         <img id="about-us" class="img-responsive img-about-us" src="{{asset('images/certificate.jpg')}}  "
                             alt="about us">
-                    </div>
+                    </div> --}}
 
                 </div>
                 <div class="feature-about">
                     <br> <br>
-                    <p> Here at Smart Wealth, our goal is to promote the financial status of our clients through our
+                    <p> Here at {{ config('app.name') }}, our goal is to promote the financial status of our clients through our
                         uncompromised financial automated crypto investment software. Our platform
                         is an Award winning crypto company, providing investors 24 hours support towards investing their
                         way to financial freedom.
                         Our team consists of leading experts from traditional finance but also from the crypto industry.
-                        This mix makes Smart Wealth not only unique but also
+                        This mix makes {{ config('app.name') }} not only unique but also
                         enables the company to bridge the gap between the two worlds, offering investors attractive
                         investment
                         opportunities.

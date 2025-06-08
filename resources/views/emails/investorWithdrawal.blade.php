@@ -74,7 +74,7 @@
 
         <p>Thank you for choosing us</p>
 
-        <a href="http://smart-wealth.uk/" class="button"> {{ config('app.name') }}</a>
+        <a href="" class="button"> {{ config('app.name') }}</a>
 
         {{-- <div class="footer">
             Thanks, <br>
