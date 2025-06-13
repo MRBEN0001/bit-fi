@@ -41,7 +41,9 @@
     
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-    <script src="//code.jivosite.com/widget/7feT8xB1OF" async></script>
+{{-- jivo chat --}}
+    <script src="//code.jivosite.com/widget/GihWyVSN8z" async></script>
+
 
 </head>
 

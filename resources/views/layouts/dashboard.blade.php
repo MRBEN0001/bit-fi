@@ -24,7 +24,8 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" />
 
-    <script src="//code.jivosite.com/widget/7feT8xB1OF" async></script>
+{{-- jivo chat --}}
+<script src="//code.jivosite.com/widget/GihWyVSN8z" async></script>
 
 
 </head>

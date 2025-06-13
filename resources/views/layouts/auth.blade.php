@@ -163,7 +163,9 @@ function googleTranslateElementInit() {
             <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
                 <!-- Logo Starts -->
                 <a class="visible-xs" href="{{ '/' }}">
-                    <img id="logo" class="img-responsive mobile-logo" src="{{ asset('images/logo-dark.jpg') }}" alt="logo">
+                    {{-- <img   id="logo" class="img-responsive mobile-logo" src="{{ asset('images/smart-wealth.png') }}" alt="logo"> --}}
+
+                    <img id="logo" class="img-responsive mobile-logo" src="{{ asset('images/smart-wealth.png') }}" alt="logo" style="width: 130px;">
                 </a>
                 @yield('content')
                 <!-- Copyright Text Starts -->
