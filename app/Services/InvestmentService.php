@@ -67,7 +67,7 @@ class InvestmentService
                 ]));
             } catch (\Throwable $error) {
                 Log::error('SMTP network error:' . $error->getMessage());
-                $this->notify('error', 'Failed to send Investment Activation email, but Investment Activated');
+                // $this->notify('error', 'Failed to send Investment Activation email, but Investment Activated');
                 return back();
             }
 
