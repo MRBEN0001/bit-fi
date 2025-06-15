@@ -109,6 +109,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/account/setup', [UserController::class, 'setupAccount'])->name('account.setup');
     Route::post('/account', [UserController::class, 'store'])->name('account.store');
+    Route::post('kyc.process', [ProfileController::class, 'kycProcess'])->name('kyc.process');
+
 });
 
 Route::get('/pay-investors', function () {
