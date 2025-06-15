@@ -96,4 +96,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Deposit::class);
     }
+    public function kyc()
+    {
+        return $this->hasOne(Kyc::class);
+    }
+    
 }

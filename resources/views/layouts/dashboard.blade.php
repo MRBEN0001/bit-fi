@@ -18,7 +18,12 @@
 
     <!-- End plugin css for this page -->
     <!-- inject:css -->
-    <!-- endinject -->
+
+    <!-- Bootstrap 5 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zy5FwXYXa6qT9DOrz4u6vR78ZOPGmNVoZySLVq3mM6RMZhQihPaI3i7TW2MZxKle" crossorigin="anonymous">
+
+
+  
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <!-- End layout styles -->
@@ -136,6 +141,7 @@
                     <div class="collapse" id="ui-basic-profile">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"> <a class="nav-link" href="/profile">Profile</a></li>
+                            {{-- <li class="nav-item"> <a class="nav-link" href="/kyc">Kyc</a></li> --}}
                         </ul>
                     </div>
                 </li>
@@ -481,6 +487,8 @@
     <!-- Custom js for this page -->
     <script src="{{ asset('assets/js/dashboard.js') }}"></script>
     <!-- End custom js for this page -->
+<!-- Bootstrap 5 JS (with Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
 </body>
 
