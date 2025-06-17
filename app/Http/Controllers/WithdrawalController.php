@@ -55,10 +55,9 @@ class WithdrawalController extends Controller
 
                 // Flash success message
                 session()->flash('success', $withdraw['message']);
-                dd("Email sent succesfully");
+               
                 return redirect('/withdrawals');
             } catch (\Throwable $error) {
-                dd($error->getMessage());
                 Log::error('SMTP network error: ' . $error->getMessage());
                 return redirect('/withdrawals');
             }
