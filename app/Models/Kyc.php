@@ -20,7 +20,6 @@ class Kyc extends Model
         'id_front',
         'id_back',
         'passport_photo',
-        'status',
     ];
 
     public function user()
