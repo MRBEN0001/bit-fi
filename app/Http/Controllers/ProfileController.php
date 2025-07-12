@@ -9,9 +9,9 @@ use Illuminate\Http\Request;
 use App\Models\CompanyWallet;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\ProfileUpdateRequest;
-
 class ProfileController extends Controller
 {
     /**
@@ -81,15 +81,28 @@ class ProfileController extends Controller
     
         $user = Auth::user();
     
+        // $folder = 'kyc_uploads/' . $user->id;
+        // if (!file_exists(public_path($folder))) {
+        //     mkdir(public_path($folder), 0755, true);
+        // }
+    
+        // $idFrontPath = $request->file('id_front')->move(public_path($folder), 'id_front.' . $request->file('id_front')->getClientOriginalExtension());
+        // $idBackPath = $request->file('id_back')->move(public_path($folder), 'id_back.' . $request->file('id_back')->getClientOriginalExtension());
+        // $passportPath = $request->file('passport_photo')->move(public_path($folder), 'passport.' . $request->file('passport_photo')->getClientOriginalExtension());
+    
         $folder = 'kyc_uploads/' . $user->id;
-        if (!file_exists(public_path($folder))) {
-            mkdir(public_path($folder), 0755, true);
+
+        // Save to default disk (local => storage/app/public)
+        $idFrontPath = $request->file('id_front')->store($folder, 'public');
+        $idBackPath = $request->file('id_back')->store($folder, 'public');
+        $passportPath = $request->file('passport_photo')->store($folder, 'public');
+    
+        if ($user->kyc) {
+            return back()->with('error', 'You have already submitted your KYC.');
         }
-    
-        $idFrontPath = $request->file('id_front')->move(public_path($folder), 'id_front.' . $request->file('id_front')->getClientOriginalExtension());
-        $idBackPath = $request->file('id_back')->move(public_path($folder), 'id_back.' . $request->file('id_back')->getClientOriginalExtension());
-        $passportPath = $request->file('passport_photo')->move(public_path($folder), 'passport.' . $request->file('passport_photo')->getClientOriginalExtension());
-    
+
+
+        
         // Prevent duplicate KYC submission
         if ($user->kyc) {
             return back()->with('error', 'You have already submitted your KYC.');
@@ -109,6 +122,7 @@ class ProfileController extends Controller
         ]);
     
         return back()->with('success', 'KYC submitted successfully and is now under review.');
+
     }
     
 }

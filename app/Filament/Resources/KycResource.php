@@ -54,17 +54,26 @@ class KycResource extends Resource
             //     ->label('ID Front')
             //     ->url(fn ($record) => asset($record->id_front)),
 
+                // ImageColumn::make('id_front')
+                // ->label('ID Front')
+                // ->getStateUsing(fn ($record) => asset($record->id_front)),
+
                 ImageColumn::make('id_front')
-                ->label('ID Front')
-                ->getStateUsing(fn ($record) => asset($record->id_front)),
+    ->label('ID Front')
+    ->getStateUsing(fn ($record) => asset('storage/' . $record->id_front)),
+                
+    //             ImageColumn::make('id_front')
+    // ->label('ID Front')
+    // ->url(fn ($record) => asset($record->id_front)),
+    
             
             ImageColumn::make('id_back')
                 ->label('ID Back')
-                ->getStateUsing(fn ($record) => asset($record->id_back)),
+                ->getStateUsing(fn ($record) => asset('storage/' . $record->id_back)),
             
             ImageColumn::make('passport_photo')
                 ->label('Passport')
-                ->getStateUsing(fn ($record) => asset($record->passport_photo)),
+                ->getStateUsing(fn ($record) => asset('storage/' . $record->passport_photo)),
             ])
             ->filters([
                 //
