@@ -396,6 +396,15 @@
                                     <div class="preview-item-content">
                                         <p class="preview-subject mb-1">Admin Area</p>
                                     </div>
+                                </a> <a class="dropdown-item preview-item" href="/admin/view/kycs">
+                                    <div class="preview-thumbnail">
+                                        <div class="preview-icon bg-dark rounded-circle">
+                                            <i class="mdi mdi-settings text-success"></i>
+                                        </div>
+                                    </div>
+                                    <div class="preview-item-content">
+                                        <p class="preview-subject mb-1">KYC</p>
+                                    </div>
                                 </a>
                                 @endif
                                 <div class="dropdown-divider"></div>

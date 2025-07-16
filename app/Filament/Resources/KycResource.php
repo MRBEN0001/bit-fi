@@ -9,11 +9,13 @@ use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Support\Facades\Storage;
 use Filament\Tables\Columns\ImageColumn;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\KycResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\KycResource\RelationManagers;
+
 
 
 class KycResource extends Resource
@@ -48,25 +50,42 @@ class KycResource extends Resource
                 TextColumn::make('state'),
                 TextColumn::make('zip'),
                 TextColumn::make('id_type')->label('ID Type'),
-            
-            // Display custom public path images
-            // ImageColumn::make('id_front')
+
+            //     ImageColumn::make('id_front')
             //     ->label('ID Front')
-            //     ->url(fn ($record) => asset($record->id_front)),
+            //     ->getStateUsing(fn ($record) => Storage::disk('public')->url($record->id_front)),
+            
+            // ImageColumn::make('id_back')
+            //     ->label('ID Back')
+            //     ->getStateUsing(fn ($record) => Storage::disk('public')->url($record->id_back)),
+            
+            // ImageColumn::make('passport_photo')
+            //     ->label('Passport')
+            //     ->getStateUsing(fn ($record) => Storage::disk('public')->url($record->passport_photo)),
 
                 // ImageColumn::make('id_front')
-                // ->label('ID Front')
-                // ->getStateUsing(fn ($record) => asset($record->id_front)),
+                //     ->label('ID Front')
+                //     ->disk('public') // This tells Filament to look inside storage/app/public
+                //     ->visibility('visible'),
 
+                // ImageColumn::make('id_back')
+                //     ->label('ID Back')
+                //     ->disk('public')
+                //     ->visibility('visible'),
+
+                // ImageColumn::make('passport_photo')
+                //     ->label('Passport')
+                //     ->disk('public')
+                //     ->visibility('visible'),
+
+
+                    
+                    
                 ImageColumn::make('id_front')
     ->label('ID Front')
     ->getStateUsing(fn ($record) => asset('storage/' . $record->id_front)),
                 
-    //             ImageColumn::make('id_front')
-    // ->label('ID Front')
-    // ->url(fn ($record) => asset($record->id_front)),
     
-            
             ImageColumn::make('id_back')
                 ->label('ID Back')
                 ->getStateUsing(fn ($record) => asset('storage/' . $record->id_back)),
@@ -74,6 +93,8 @@ class KycResource extends Resource
             ImageColumn::make('passport_photo')
                 ->label('Passport')
                 ->getStateUsing(fn ($record) => asset('storage/' . $record->passport_photo)),
+
+
             ])
             ->filters([
                 //
@@ -85,14 +106,14 @@ class KycResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -100,5 +121,5 @@ class KycResource extends Resource
             'create' => Pages\CreateKyc::route('/create'),
             'edit' => Pages\EditKyc::route('/{record}/edit'),
         ];
-    }    
+    }
 }

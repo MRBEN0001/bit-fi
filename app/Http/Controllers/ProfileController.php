@@ -116,13 +116,24 @@ class ProfileController extends Controller
             'state' => $request->state,
             'zip' => $request->zip,
             'id_type' => $request->id_type,
+         
             'id_front' => $folder . '/' . basename($idFrontPath),
             'id_back' => $folder . '/' . basename($idBackPath),
             'passport_photo' => $folder . '/' . basename($passportPath),
+               // 'id_front' => Storage::url($idFrontPath),
+            // 'id_back' => Storage::url($idBackPath),
+            // 'passport_photo' => Storage::url($passportPath),
         ]);
     
         return back()->with('success', 'KYC submitted successfully and is now under review.');
 
+    }
+    
+
+    public function adminViewKycIndex()
+    {
+        $kycs = Kyc::with('user')->latest()->get();
+        return view('admin.view-kyc-index', compact('kycs'));
     }
     
 }
