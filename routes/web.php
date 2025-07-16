@@ -1,11 +1,11 @@
 <?php
 
+use App\Models\Plan;
 use App\Mail\WelcomeMail;
 use App\Mail\AdminToUserMail;
 use App\Mail\newReferralMail;
 use App\Mail\WithdrawalRequestMail;
 use App\Mail\WithdrawalApproaveMail;
-use App\Models\Plan;
 
 use Illuminate\Support\Facades\Mail;
 use App\Mail\InvestmentActivatedMail;
@@ -13,17 +13,17 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\EnsureHasAccount;
+use App\Http\Controllers\ImportController;
 use App\Mail\InvestorPaymentCompletedMail;
 use App\Mail\PartnersPaymentCompletedMail;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\ImportController;
 use App\Http\Controllers\ProfileController;
 
 
+use App\Mail\NewInvestmentNotificationMail;
 use App\Http\Controllers\GuestPagesController;
 use App\Http\Middleware\EnsureAccountIsEnabled;
 use App\Http\Middleware\EnsureDepositCompleted;
-use App\Mail\NewInvestmentNotificationMail;
 use App\Http\Middleware\EnsureEligibleToInvest;
 use App\Http\Middleware\EnsureWithdrawalIsMade;
 
@@ -110,6 +110,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/account/setup', [UserController::class, 'setupAccount'])->name('account.setup');
     Route::post('/account', [UserController::class, 'store'])->name('account.store');
     Route::post('kyc.process', [ProfileController::class, 'kycProcess'])->name('kyc.process');
+
+    // admin view kyc details
+Route::get('/admin/view/kycs', [ProfileController::class, 'adminViewKycIndex'])->name('admin.kycs');
 
 });
 
