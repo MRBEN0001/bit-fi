@@ -47,11 +47,11 @@
                         crypto company with Funds secured in offline wallets.
                         Fully compliant with IT and money laundering security standards.
                     </p>
-{{-- 
+
                     <div class="col-sm-12 col-md-5 col-lg-6 text-center">
                         <img id="about-us" class="img-responsive img-about-us" src="{{asset('images/certificate.jpg')}}  "
                             alt="about us">
-                    </div> --}}
+                    </div>
 
                 </div>
                 <div class="feature-about">
