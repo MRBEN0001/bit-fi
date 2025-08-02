@@ -34,14 +34,15 @@
                             <td>{{ $kyc->zip }}</td>
                             <td>{{ $kyc->id_type }}</td>
                             <td class="text-center">
-                                <img src="{{ asset('storage/' . $kyc->id_front) }}" alt="ID Front" style="  border-radius: 2%; width: fit-content; height: fit-content; max-height: 80px;">
+                                <img src="{{ asset($kyc->id_front) }}" alt="ID Front" style="border-radius: 2%; width: auto; height: auto; max-height: 80px;">
                             </td>
                             <td class="text-center">
-                                <img src="{{ asset('storage/' . $kyc->id_back) }}" alt="ID Back" style=" border-radius: 2%; width: fit-content; height: fit-content;max-height: 80px;">
+                                <img src="{{ asset($kyc->id_back) }}" alt="ID Back" style="border-radius: 2%; width: auto; height: auto; max-height: 80px;">
                             </td>
                             <td class="text-center">
-                                <img src="{{ asset('storage/' . $kyc->passport_photo) }}" alt="Passport" style=" border-radius: 2%; width: fit-content; height: fit-content;max-height: 80px;">
+                                <img src="{{ asset($kyc->passport_photo) }}" alt="Passport" style="border-radius: 2%; width: auto; height: auto; max-height: 80px;">
                             </td>
+                            
                         </tr>
                     @endforeach
                 </tbody>
