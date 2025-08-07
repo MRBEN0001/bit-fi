@@ -11,7 +11,10 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-
+    public function publicHtmlPath(){
+        $publicPath = public_path();
+        return dirname(dirname($publicPath));
+   }
     protected function myPendingDeposit()
     {
         return me()->deposits->whereNull('reference')->first();

@@ -34,7 +34,7 @@
         <div class="row about-content">
             <!-- Image Starts -->
             <div class="col-sm-12 col-md-5 col-lg-6 text-center">
-                <img id="about-us" class="img-responsive img-about-us" src="{{asset('images/about-us.png')}}  "
+                <img id="about-us" class="img-responsive img-about-us" src="{{asset('images/about-us.png')}"
                     alt="about us">
             </div>
             <!-- Image Ends -->
@@ -49,8 +49,9 @@
                     </p>
 
                     <div class="col-sm-12 col-md-5 col-lg-6 text-center">
-                        <img id="about-us" class="img-responsive img-about-us" src="{{asset('images/certificate-asset-top.jpg')}}  "
+                        <img id="about-us" class="img-responsive img-about-us" src="{{asset('images/certificate-asset-top.jpg')}}"
                             alt="about us">
+                            
                     </div>
 
                 </div>
