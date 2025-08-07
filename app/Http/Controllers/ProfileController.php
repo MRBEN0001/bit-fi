@@ -66,58 +66,59 @@ class ProfileController extends Controller
 
   
 
-public function kycProcess(Request $request)
-{
-    $request->validate([
-        'dob' => 'required|date',
-        'address' => 'required|string|max:255',
-        'city' => 'required|string|max:100',
-        'state' => 'required|string|max:100',
-        'zip' => 'required|string|max:20',
-        'id_type' => 'required|string',
-        'id_front' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-        'id_back' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-        'passport_photo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-    ]);
-
-    $user = Auth::user();
-
-    $folder = public_path('images');
-
-    // Make sure the public/images folder exists
-    if (!file_exists($folder)) {
-        mkdir($folder, 0755, true);
+    public function kycProcess(Request $request)
+    {
+        $request->validate([
+            'dob' => 'required|date',
+            'address' => 'required|string|max:255',
+            'city' => 'required|string|max:100',
+            'state' => 'required|string|max:100',
+            'zip' => 'required|string|max:20',
+            'id_type' => 'required|string',
+            'id_front' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'id_back' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'passport_photo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+    
+        $user = Auth::user();
+    
+        if ($user->kyc) {
+            return back()->with('error', 'You have already submitted your KYC.');
+        }
+    
+    
+      $imageFront = $request->file('id_front');
+      $imageBack = $request->file('id_back');
+      $imagePassport = $request->file('passport_photo');
+        
+      $front = date('YmdHi') . $imageFront->getClientOriginalName();
+      $imagesPath = $this->publicHtmlPath() . '/kyc';
+      $imageFront->move($imagesPath, $front);
+      $data['id_front'] = $front;
+    
+      $back = date('YmdHi') . $imageBack->getClientOriginalName();
+      $imageBack->move($imagesPath, $back);
+      $data['id_back'] = $back;
+    
+      $passport = date('YmdHi') . $imagePassport->getClientOriginalName();
+      $imagePassport->move($imagesPath, $passport);
+      $data['passport_photo'] = $passport;
+    
+        Kyc::create([
+            'user_id' => $user->id,
+            'dob' => $request->dob,
+            'address' => $request->address,
+            'city' => $request->city,
+            'state' => $request->state,
+            'zip' => $request->zip,
+            'id_type' => $request->id_type,
+            'id_front' => $front,
+            'id_back' => $back,
+            'passport_photo' => $passport,
+        ]);
+    
+        return back()->with('success', 'KYC submitted successfully and is now under review.');
     }
-
-    // Unique names to avoid collisions
-    $idFrontName = 'id_front_' . $user->id . '_' . Str::random(6) . '.' . $request->file('id_front')->getClientOriginalExtension();
-    $idBackName = 'id_back_' . $user->id . '_' . Str::random(6) . '.' . $request->file('id_back')->getClientOriginalExtension();
-    $passportName = 'passport_' . $user->id . '_' . Str::random(6) . '.' . $request->file('passport_photo')->getClientOriginalExtension();
-
-    $request->file('id_front')->move($folder, $idFrontName);
-    $request->file('id_back')->move($folder, $idBackName);
-    $request->file('passport_photo')->move($folder, $passportName);
-
-    if ($user->kyc) {
-        return back()->with('error', 'You have already submitted your KYC.');
-    }
-
-    Kyc::create([
-        'user_id' => $user->id,
-        'dob' => $request->dob,
-        'address' => $request->address,
-        'city' => $request->city,
-        'state' => $request->state,
-        'zip' => $request->zip,
-        'id_type' => $request->id_type,
-        'id_front' => 'images/' . $idFrontName,
-        'id_back' => 'images/' . $idBackName,
-        'passport_photo' => 'images/' . $passportName,
-    ]);
-
-    return back()->with('success', 'KYC submitted successfully and is now under review.');
-}
-
 
 
     // public function kycProcess(Request $request)
