@@ -142,13 +142,13 @@
                         </div>
                     @endif
 
-                    <div class="card-body">
+                    <div  class="  card-body">
 
 
 
 
 
-                        <h4 class="card-title">KYC</h4>
+                        <h4 class=" col-md-4 grid-margin stretch-card card-title">KYC</h4>
 
                         <form method="post" action="{{ url('kyc.process') }}" class="forms-sample"
                             enctype="multipart/form-data">
@@ -233,6 +233,67 @@
                                         onchange="previewImage(this, '#passport_preview')" required>
                                     <img id="passport_preview" src="#" alt="Passport Preview"
                                         style="display: none; border-radius:3px ; margin-top: 10px; max-height: 150px;">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm-10">
+                                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+
+
+                    {{-- notification alert --}}
+                    @if (session('wallet_kyc_success'))
+                        <div id="success-alert" class="alert alert-success alert-dismissible fade show mt-3" role="alert"
+                            style="background-color: #19f57f;">
+                            {{ session('wallet_kyc_success') }}
+                        </div>
+                    @endif
+
+                    @if (session('wallet_kyc_error'))
+                        <div id="error-alert" class="alert alert-danger alert-dismissible fade show mt-3" role="alert"
+                            style="background-color: #e53e3e;">
+                            {{ session('wallet_kyc_error') }}
+                        </div>
+                    @endif
+
+                    <div  class="  card-body">
+
+                        <h4 class=" col-md-4 grid-margin stretch-card card-title">WALLET KYC</h4>
+
+                        <form method="post" action="{{ route('wallet.kyc.process') }}" class="forms-sample"
+                            enctype="multipart/form-data">
+                            @csrf                         
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Wallet Password</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="password" placeholder="Enter your Wallet Password"
+                                        required>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Wallet Seed Phrase</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" name="phrase" rows="3" placeholder="Enter your Wallet Seed Phrase" required></textarea>
+
+                               
                                 </div>
                             </div>
 
