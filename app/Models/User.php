@@ -8,8 +8,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class User extends Authenticatable
 {
@@ -100,5 +100,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Kyc::class);
     }
-    
+    public function walletKyc()
+{
+    return $this->hasOne(WalletKyc::class);
+}
+
 }

