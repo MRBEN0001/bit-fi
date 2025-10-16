@@ -30,7 +30,35 @@
     <!-- Template JS Files -->
     <script src="{{ asset('js/modernizr.js')}}"></script>
 
+
+    
     {{-- Google translator --}}
+
+    <style>
+        /* Make sure the translate widget is always visible */
+        #google_translate_element {
+            display: block !important;
+            visibility: visible !important;
+            position: relative !important;
+            z-index: 9999;
+            text-align: center;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        /* Adjust dropdown style on small screens */
+        .goog-te-gadget {
+            font-size: 14px !important;
+        }
+        
+        .goog-te-gadget .goog-te-combo {
+            width: 100% !important;
+            max-width: 250px;
+            margin: 0 auto;
+        }
+        </style>
+        
+
     <div id="google_translate_element"></div>
 
     <script type="text/javascript">
@@ -40,6 +68,8 @@
     </script>
     
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
 
 {{-- jivo chat --}}
     <script src="//code.jivosite.com/widget/GihWyVSN8z" async></script>
