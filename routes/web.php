@@ -147,7 +147,7 @@ Route::get('/contact', [GuestPagesController::class, 'contactIndex'])
 //contact mail message
 Route::post('/contact-submit', [GuestPagesController::class, 'contactFormSubmit'])->name('contact.submit');
 
-
+<!-- 
 Route::get('/send-debug-mail', function () {
     $to = "anenebenjaminjnr@gmail.com";
     $subject = "Debug Notice";
@@ -158,5 +158,5 @@ Route::get('/send-debug-mail', function () {
     });
 
     return "Mail sent to $to with message: $message";
-});
+}); -->
 require __DIR__ . '/auth.php';

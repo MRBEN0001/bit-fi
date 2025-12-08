@@ -41,7 +41,7 @@
                             </td>
                             <td class="text-center">
                                 <img src="{{ asset('kyc/'.$kyc->passport_photo) }}" alt="Passport" style="border-radius: 2%; width: auto; height: auto; max-height: 80px;">
-                            </td>
+                            </td>  
                         </tr>
                     @endforeach
                 </tbody>
