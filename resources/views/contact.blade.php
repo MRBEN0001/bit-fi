@@ -91,7 +91,9 @@
                             <div class="contact-info-box-content">
                                 <h4>Email Addresses</h4>
 
-                                <p>assetchain2@gmail.com</p>
+                                <p>
+                                    {{ config('app.email') }}
+                                </p>
                             </div>
                         </div>
                         <!-- Contact Info Box Ends -->

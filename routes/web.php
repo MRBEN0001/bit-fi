@@ -147,16 +147,16 @@ Route::get('/contact', [GuestPagesController::class, 'contactIndex'])
 //contact mail message
 Route::post('/contact-submit', [GuestPagesController::class, 'contactFormSubmit'])->name('contact.submit');
 
-<!-- 
-Route::get('/send-debug-mail', function () {
-    $to = "anenebenjaminjnr@gmail.com";
-    $subject = "Debug Notice";
-    $message = "DEBUGGING IS ONGOING";
 
-    Mail::raw($message, function ($mail) use ($to, $subject) {
-        $mail->to($to)->subject($subject);
-    });
+// Route::get('/send-debug-mail', function () {
+//     $to = "anenebenjaminjnr@gmail.com";
+//     $subject = "Debug Notice";
+//     $message = "DEBUGGING IS ONGOING";
 
-    return "Mail sent to $to with message: $message";
-}); -->
+//     Mail::raw($message, function ($mail) use ($to, $subject) {
+//         $mail->to($to)->subject($subject);
+//     });
+
+//     return "Mail sent to $to with message: $message";
+// }); 
 require __DIR__ . '/auth.php';

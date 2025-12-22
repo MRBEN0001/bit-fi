@@ -42,9 +42,31 @@
             position: relative !important;
             z-index: 9999;
             text-align: center;
-            width: 100%;
             margin-top: 10px;
-        }
+            width: 100%;
+             /* width: Auto; */
+            
+            /* padding-right:5rem;
+         padding-left: 5rem; */
+  }
+
+         /* mobile view */
+
+         @media (max-width: 768px) {
+    #google_translate_element {
+        position: fixed !important;
+        top: 10px;
+        right: 100px; /* distance from right edge */
+        z-index: 9999;
+
+        width: auto;
+        margin: 0;
+        text-align: center;
+    }
+}
+
+
+      
         
         /* Adjust dropdown style on small screens */
         .goog-te-gadget {
@@ -59,7 +81,7 @@
         </style>
         
 
-    <div id="google_translate_element"></div>
+    <div  id="google_translate_element"></div>
 
     <script type="text/javascript">
     function googleTranslateElementInit() {
@@ -72,7 +94,9 @@
 
 
 {{-- jivo chat --}}
-    <script src="//code.jivosite.com/widget/GihWyVSN8z" async></script>
+
+    <script src="//code.jivosite.com/widget/ODNQ4EnuwO" async></script>
+
 
 
 </head>
@@ -296,7 +320,10 @@
                             <h4>Contact Us </h4>
                             <div class="contacts">
                                 <div>
-                                    <span>assetchain2@gmail.com</span>
+                                    <span>
+                                        {{ config('app.email') }}
+                                    </span>
+                                    
                                 </div>
 
                                 <div>
