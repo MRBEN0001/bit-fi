@@ -32,7 +32,7 @@
 
     {{-- Google translator --}}
 
-    <style>
+    {{-- <style>
         /* Make sure the translate widget is always visible */
         #google_translate_element {
             display: block !important;
@@ -54,19 +54,19 @@
             max-width: 250px;
             margin: 0 auto;
         }
-        </style>
+        </style> --}}
         
 
-    <div id="google_translate_element"></div>
+    {{-- <div id="google_translate_element"></div> --}}
 
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
     }
-    </script>
+    </script> --}}
     
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+    {{-- <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+ --}}
 
 {{-- jivo chat --}}
 <script src="//code.jivosite.com/widget/GihWyVSN8z" async></script>
